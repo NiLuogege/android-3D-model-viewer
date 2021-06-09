@@ -43,6 +43,8 @@ public class ModelActivity extends Activity implements EventListener {
 
     /**
      * Type of model if file name has no extension (provided though content provider)
+     *
+     * 文件类型  0 = obj, 1 = stl, 2 = dae
      */
     private int paramType;
     /**
@@ -51,10 +53,12 @@ public class ModelActivity extends Activity implements EventListener {
     private URI paramUri;
     /**
      * Enter into Android Immersive mode so the renderer is full screen or not
+     * 是否全屏模式
      */
     private boolean immersiveMode;
     /**
      * Background GL clear color. Default is light gray
+     * ??? 这是干啥的
      */
     private float[] backgroundColor = new float[]{0.0f, 0.0f, 0.0f, 1.0f};
 
