@@ -93,7 +93,7 @@ public class SceneLoader implements LoadListener, EventListener {
     /**
      * state machine for drawing modes
      */
-    private int drawwMode = 0;
+    private int drawwMode = 0; //绘制模式 0：Faces ，1：Wireframe，2：Points，3，Skeleton,4：Normals
     /**
      * Whether to draw objects as wireframes
      */

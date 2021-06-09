@@ -43,7 +43,7 @@ public class ModelActivity extends Activity implements EventListener {
 
     /**
      * Type of model if file name has no extension (provided though content provider)
-     *
+     * <p>
      * 文件类型  0 = obj, 1 = stl, 2 = dae
      */
     private int paramType;
@@ -124,6 +124,8 @@ public class ModelActivity extends Activity implements EventListener {
             Log.i("ModelActivity", "Loading GLSurfaceView...");
             gLView = new ModelSurfaceView(this, backgroundColor, this.scene);
             gLView.addListener(this);
+
+            //将 GLSurfaceView 进行显示
             setContentView(gLView);
             scene.setView(gLView);
         } catch (Exception e) {
@@ -131,6 +133,7 @@ public class ModelActivity extends Activity implements EventListener {
             Toast.makeText(this, "Error loading OpenGL view:\n" + e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
+        //创建触摸控制器
         try {
             Log.i("ModelActivity", "Loading TouchController...");
             touchController = new TouchController(this);
@@ -140,6 +143,7 @@ public class ModelActivity extends Activity implements EventListener {
             Toast.makeText(this, "Error loading TouchController:\n" + e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
+        //创建碰撞控制器
         try {
             Log.i("ModelActivity", "Loading CollisionController...");
             collisionController = new CollisionController(gLView, scene);
@@ -151,6 +155,7 @@ public class ModelActivity extends Activity implements EventListener {
             Toast.makeText(this, "Error loading CollisionController\n" + e.getMessage(), Toast.LENGTH_LONG).show();
         }
 
+        //创建相机控制器
         try {
             Log.i("ModelActivity", "Loading CameraController...");
             cameraController = new CameraController(scene.getCamera());
@@ -178,6 +183,7 @@ public class ModelActivity extends Activity implements EventListener {
 
         setupOnSystemVisibilityChangeListener();
 
+        // 加载mode
         // load model
         scene.init();
 
@@ -228,7 +234,7 @@ public class ModelActivity extends Activity implements EventListener {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.model_toggle_wireframe:
-                scene.toggleWireframe();
+                scene.toggleWireframe();//切换 绘制模式 0：Faces ，1：Wireframe，2：Points，3，Skeleton,4：Normals
                 break;
             case R.id.model_toggle_boundingbox:
                 scene.toggleBoundingBox();
