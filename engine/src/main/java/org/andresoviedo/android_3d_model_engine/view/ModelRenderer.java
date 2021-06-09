@@ -454,24 +454,24 @@ public class ModelRenderer implements GLSurfaceView.Renderer {
 
         // draw environment
         int skyBoxId = isUseskyBoxId;
-        if (skyBoxId == -3){
+        if (skyBoxId == -3){//显示网格
             // draw all extra objects
             for (int i = 0; i < extras.size(); i++) {
                 drawObject(viewMatrix, projectionMatrix, lightPosInWorldSpace, colorMask, cameraPosInWorldSpace, false, false, false, false, false, extras, i);
             }
         }
-        else if (skyBoxId == -2){
+        else if (skyBoxId == -2){//绘制传入进来的 背景色
             GLES20.glClearColor(backgroundColor[0], backgroundColor[1], backgroundColor[2], backgroundColor[3]);
             // Draw background color
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
         }
-        else if (skyBoxId == -1){
+        else if (skyBoxId == -1){//绘制传入背景色的反色
             // invert background color
             GLES20.glClearColor(1-backgroundColor[0], 1-backgroundColor[1], 1-backgroundColor[2], 1-backgroundColor[3]);
             // Draw background color
             GLES20.glClear(GLES20.GL_COLOR_BUFFER_BIT | GLES20.GL_DEPTH_BUFFER_BIT);
         }
-        else if (isDrawSkyBox && skyBoxId >= 0 && skyBoxId < skyBoxes3D.length) {
+        else if (isDrawSkyBox && skyBoxId >= 0 && skyBoxId < skyBoxes3D.length) {//绘制预置的 背景图
             GLES20.glDepthMask(false);
             try {
                 //skyBoxId = 1;
