@@ -58,7 +58,7 @@ public class ModelActivity extends Activity implements EventListener {
     private boolean immersiveMode;
     /**
      * Background GL clear color. Default is light gray
-     * ??? 这是干啥的
+     * 设置背景色 RGBA
      */
     private float[] backgroundColor = new float[]{0.0f, 0.0f, 0.0f, 1.0f};
 

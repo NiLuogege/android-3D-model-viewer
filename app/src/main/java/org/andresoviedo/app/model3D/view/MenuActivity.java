@@ -80,7 +80,7 @@ public class MenuActivity extends ListActivity {
                 case DEMO:
                     Intent demoIntent = new Intent(MenuActivity.this.getApplicationContext(), ModelActivity.class);
                     demoIntent.putExtra("immersiveMode", "false");
-                    demoIntent.putExtra("backgroundColor", "0 0 0 255");
+                    demoIntent.putExtra("backgroundColor", "0 0 255 1");//RGBA
                     MenuActivity.this.startActivity(demoIntent);
                     break;
                 case GITHUB:
