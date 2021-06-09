@@ -237,7 +237,7 @@ public class ModelActivity extends Activity implements EventListener {
                 scene.toggleWireframe();//切换 绘制模式 0：Faces ，1：Wireframe，2：Points，3，Skeleton,4：Normals
                 break;
             case R.id.model_toggle_boundingbox:
-                scene.toggleBoundingBox();
+                scene.toggleBoundingBox(); //是否绘制边框
                 break;
             case R.id.model_toggle_skybox:
                 gLView.toggleSkyBox();

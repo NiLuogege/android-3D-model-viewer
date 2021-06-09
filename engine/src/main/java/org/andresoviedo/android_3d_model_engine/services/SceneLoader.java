@@ -104,6 +104,7 @@ public class SceneLoader implements LoadListener, EventListener {
     private boolean drawPoints = false;
     /**
      * Whether to draw bounding boxes around objects
+     * 是否绘制边框
      */
     private boolean drawBoundingBox = false;
     /**
