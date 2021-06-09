@@ -239,11 +239,11 @@ public class ModelActivity extends Activity implements EventListener {
             case R.id.model_toggle_boundingbox:
                 scene.toggleBoundingBox(); //是否绘制边框
                 break;
-            case R.id.model_toggle_skybox:
+            case R.id.model_toggle_skybox: //切换背景
                 gLView.toggleSkyBox();
                 break;
             case R.id.model_toggle_textures:
-                scene.toggleTextures();
+                scene.toggleTextures();//切换纹理 （纹理关闭，颜色关闭，纹理开启）
                 break;
             case R.id.model_toggle_animation:
                 scene.toggleAnimation();
