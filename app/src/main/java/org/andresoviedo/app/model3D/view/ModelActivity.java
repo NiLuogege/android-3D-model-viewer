@@ -264,9 +264,9 @@ public class ModelActivity extends Activity implements EventListener {
                 scene.toggleBlending();//设置是否混合 透明度
                 break;
             case R.id.model_toggle_immersive:
-                toggleImmersive();
+                toggleImmersive();//设置是否全屏
                 break;
-            case R.id.model_load_texture:
+            case R.id.model_load_texture:// 加入纹理（贴纸的感觉）
                 Intent target = ContentUtils.createGetContentIntent("image/*");
                 Intent intent = Intent.createChooser(target, "Select a file");
                 try {
