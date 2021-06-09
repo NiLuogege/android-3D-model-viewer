@@ -106,6 +106,8 @@ public class ModelActivity extends Activity implements EventListener {
         // Create our 3D scenario
         Log.i("ModelActivity", "Loading Scene...");
         scene = new SceneLoader(this, paramUri, paramType, gLView);
+
+        //当 传进入文件 为空是，开启loader 去加载 文件
         if (paramUri == null) {
             final LoaderTask task = new DemoLoaderTask(this, null, scene);
             task.execute();
