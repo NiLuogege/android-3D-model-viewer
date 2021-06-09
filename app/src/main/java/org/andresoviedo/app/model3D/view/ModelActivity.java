@@ -246,22 +246,22 @@ public class ModelActivity extends Activity implements EventListener {
                 scene.toggleTextures();//切换纹理 （纹理关闭，颜色关闭，纹理开启）
                 break;
             case R.id.model_toggle_animation:
-                scene.toggleAnimation();
+                scene.toggleAnimation();//开启或者关闭动画
                 break;
             case R.id.model_toggle_smooth:
-                scene.toggleSmooth();
+                scene.toggleSmooth();//动画模型 仅仅 dae 格式可行？
                 break;
             case R.id.model_toggle_collision:
-                scene.toggleCollision();
+                scene.toggleCollision();//碰撞检测.(关闭时 可选中模型，开启时 不能选中但是可以进行操作（比如绘图）)
                 break;
             case R.id.model_toggle_lights:
-                scene.toggleLighting();
+                scene.toggleLighting();//调整灯光模式 rotatingLight 和 drawLighting
                 break;
             case R.id.model_toggle_stereoscopic:
-                scene.toggleStereoscopic();
+                scene.toggleStereoscopic();//切换 3d ，3d 立体浮雕 or not
                 break;
             case R.id.model_toggle_blending:
-                scene.toggleBlending();
+                scene.toggleBlending();//设置是否混合 透明度
                 break;
             case R.id.model_toggle_immersive:
                 toggleImmersive();
