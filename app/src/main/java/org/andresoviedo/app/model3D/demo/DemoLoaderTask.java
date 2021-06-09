@@ -89,6 +89,7 @@ public class DemoLoaderTask extends LoaderTask {
             super.onLoad(obj20);
 
             // test cube with texture
+            // 加载企鹅图片并 贴到 立方体表面
             try {
                 InputStream open = ContentUtils.getInputStream("penguin.bmp");
                 Object3DData obj3 = Cube.buildCubeV3(IOUtils.read(open));
@@ -102,6 +103,7 @@ public class DemoLoaderTask extends LoaderTask {
             }
 
             // test cube with texture & colors
+            // 加载门图片并 贴到 立方体表面
             try {
                 InputStream open = ContentUtils.getInputStream("cube.bmp");
                 Object3DData obj4 = Cube.buildCubeV4(IOUtils.read(open));
@@ -117,6 +119,7 @@ public class DemoLoaderTask extends LoaderTask {
             // test loading object
             try {
                 // this has no color array
+                //通过 WavefrontLoader 加载  obj 格式的 茶壶
                 Object3DData obj51 = new WavefrontLoader(GLES20.GL_TRIANGLE_FAN, new LoadListenerAdapter() {
                     @Override
                     public void onLoad(Object3DData obj53) {
@@ -137,6 +140,7 @@ public class DemoLoaderTask extends LoaderTask {
             // test loading object with materials
             try {
                 // this has color array
+                //加载门 obj
                 Object3DData obj52 = new WavefrontLoader(GLES20.GL_TRIANGLE_FAN, new LoadListenerAdapter() {
                     @Override
                     public void onLoad(Object3DData obj53) {
@@ -153,6 +157,7 @@ public class DemoLoaderTask extends LoaderTask {
             }
 
             // test loading object made of polygonal faces
+            //加载 飞机 obj
             try {
                 // this has heterogeneous faces
                 Object3DData obj53 = new WavefrontLoader(GLES20.GL_TRIANGLE_FAN, new LoadListenerAdapter() {
@@ -171,6 +176,7 @@ public class DemoLoaderTask extends LoaderTask {
             }
 
             // test loading object made of polygonal faces
+            //通过 ColladaLoader 加载 .dae  的   牛仔
             try {
                 // this has heterogeneous faces
                 Object3DData obj53 = new ColladaLoader().load(new URI("android://org.andresoviedo.dddmodel2/assets/models/cowboy.dae"), new LoadListenerAdapter() {
