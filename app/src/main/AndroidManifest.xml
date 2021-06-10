@@ -47,6 +47,8 @@
 
             <!-- android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" -->
         </activity>
+
+        <activity android:name="org.andresoviedo.app.model3D.dewu.DewuActivity"/>
     </application>
 
 </manifest>

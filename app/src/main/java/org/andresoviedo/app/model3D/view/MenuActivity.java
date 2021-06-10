@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import org.andresoviedo.android_3d_model_engine.services.collada.ColladaLoader;
 import org.andresoviedo.android_3d_model_engine.services.wavefront.WavefrontLoader;
+import org.andresoviedo.app.model3D.dewu.DewuActivity;
 import org.andresoviedo.dddmodel2.R;
 import org.andresoviedo.util.android.AndroidUtils;
 import org.andresoviedo.util.android.AssetUtils;
@@ -48,7 +49,7 @@ public class MenuActivity extends ListActivity {
 
 
     private enum Action {
-        LOAD_MODEL, GITHUB, SETTINGS, HELP, ABOUT, EXIT, UNKNOWN, DEMO
+        LOAD_MODEL, GITHUB, SETTINGS, HELP, ABOUT, EXIT, UNKNOWN, DEMO, DEWU, DEWU2
     }
 
     /**
@@ -77,6 +78,18 @@ public class MenuActivity extends ListActivity {
         }
         try {
             switch (action) {
+                case DEWU:
+                    Intent intent = new Intent(MenuActivity.this.getApplicationContext(), DewuActivity.class);
+                    intent.putExtra("uri", Uri.parse("android://" + getPackageName() + "/assets/dewu.obj").toString());
+                    MenuActivity.this.startActivity(intent);
+                    break;
+
+                case DEWU2:
+                    Intent intent2 = new Intent(MenuActivity.this.getApplicationContext(), DewuActivity.class);
+                    intent2.putExtra("uri", Uri.parse("android://" + getPackageName() + "/assets/dewu2.obj").toString());
+                    MenuActivity.this.startActivity(intent2);
+                    break;
+
                 case DEMO:
                     Intent demoIntent = new Intent(MenuActivity.this.getApplicationContext(), ModelActivity.class);
                     demoIntent.putExtra("immersiveMode", "false");
@@ -138,7 +151,7 @@ public class MenuActivity extends ListActivity {
                 (String file) -> {
                     if (file != null) {
                         ContentUtils.provideAssets(this);
-                        launchModelRendererActivity(Uri.parse("android://"+getPackageName()+"/assets/" + file));
+                        launchModelRendererActivity(Uri.parse("android://" + getPackageName() + "/assets/" + file));
                     }
                 });
     }
