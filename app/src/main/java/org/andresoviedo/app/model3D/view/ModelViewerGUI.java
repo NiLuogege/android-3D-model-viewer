@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
 
-final class ModelViewerGUI extends GUI {
+public class ModelViewerGUI extends GUI {
 
     private final ModelSurfaceView glView;
     private final SceneLoader scene;
@@ -28,7 +28,7 @@ final class ModelViewerGUI extends GUI {
     private Menu3D menu;
     private Rotator rotator;
 
-    ModelViewerGUI(ModelSurfaceView glView, SceneLoader scene) {
+    public ModelViewerGUI(ModelSurfaceView glView, SceneLoader scene) {
         super();
         this.glView = glView;
         this.scene = scene;

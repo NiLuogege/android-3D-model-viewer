@@ -80,13 +80,13 @@ public class MenuActivity extends ListActivity {
             switch (action) {
                 case DEWU:
                     Intent intent = new Intent(MenuActivity.this.getApplicationContext(), DewuActivity.class);
-                    intent.putExtra("uri", Uri.parse("android://" + getPackageName() + "/assets/dewu.obj").toString());
+                    intent.putExtra("uri", Uri.parse("android://" + getPackageName() + "/assets/models/demo1.obj").toString());
                     MenuActivity.this.startActivity(intent);
                     break;
 
                 case DEWU2:
                     Intent intent2 = new Intent(MenuActivity.this.getApplicationContext(), DewuActivity.class);
-                    intent2.putExtra("uri", Uri.parse("android://" + getPackageName() + "/assets/dewu2.obj").toString());
+                    intent2.putExtra("uri", Uri.parse("android://" + getPackageName() + "/assets/models/dewu2.obj").toString());
                     MenuActivity.this.startActivity(intent2);
                     break;
 
