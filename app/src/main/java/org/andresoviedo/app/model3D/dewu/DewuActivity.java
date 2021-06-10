@@ -43,7 +43,7 @@ public class DewuActivity extends Activity implements EventListener {
      * <p>
      * 文件类型  0 = obj, 1 = stl, 2 = dae
      */
-    private int paramType=0;
+    private int paramType = 0;
     /**
      * The file to load. Passed as input parameter
      */
@@ -76,9 +76,13 @@ public class DewuActivity extends Activity implements EventListener {
         this.paramUri = URI.create(b.getString("uri"));
 
         scene = new SceneLoader(this, paramUri, paramType, gLView);
+        scene.toggleLighting();
 
         gLView = new ModelSurfaceView(this, backgroundColor, this.scene);
         gLView.addListener(this);
+        gLView.toggleSkyBox();
+        gLView.toggleSkyBox();
+        gLView.toggleSkyBox();
 
         //将 GLSurfaceView 进行显示
         setContentView(gLView);
@@ -98,11 +102,6 @@ public class DewuActivity extends Activity implements EventListener {
         cameraController = new CameraController(scene.getCamera());
         gLView.getModelRenderer().addListener(cameraController);
         touchController.addListener(cameraController);
-
-        gui = new ModelViewerGUI(gLView, scene);
-        touchController.addListener(gui);
-        gLView.addListener(gui);
-        scene.addGUIObject(gui);
 
         // 加载mode
         // load model
