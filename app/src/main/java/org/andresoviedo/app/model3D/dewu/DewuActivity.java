@@ -43,7 +43,7 @@ public class DewuActivity extends Activity implements EventListener {
      * <p>
      * 文件类型  0 = obj, 1 = stl, 2 = dae
      */
-    private int paramType;
+    private int paramType=0;
     /**
      * The file to load. Passed as input parameter
      */
@@ -77,64 +77,32 @@ public class DewuActivity extends Activity implements EventListener {
 
         scene = new SceneLoader(this, paramUri, paramType, gLView);
 
-        try {
-            Log.i("ModelActivity", "Loading GLSurfaceView...");
-            gLView = new ModelSurfaceView(this, backgroundColor, this.scene);
-            gLView.addListener(this);
+        gLView = new ModelSurfaceView(this, backgroundColor, this.scene);
+        gLView.addListener(this);
 
-            //将 GLSurfaceView 进行显示
-            setContentView(gLView);
-            scene.setView(gLView);
-        } catch (Exception e) {
-            Log.e("ModelActivity", e.getMessage(), e);
-            Toast.makeText(this, "Error loading OpenGL view:\n" + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
+        //将 GLSurfaceView 进行显示
+        setContentView(gLView);
+        scene.setView(gLView);
 
         //创建触摸控制器
-        try {
-            Log.i("ModelActivity", "Loading TouchController...");
-            touchController = new TouchController(this);
-            touchController.addListener(this);
-        } catch (Exception e) {
-            Log.e("ModelActivity", e.getMessage(), e);
-            Toast.makeText(this, "Error loading TouchController:\n" + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
+        touchController = new TouchController(this);
+        touchController.addListener(this);
 
         //创建碰撞控制器
-        try {
-            Log.i("ModelActivity", "Loading CollisionController...");
-            collisionController = new CollisionController(gLView, scene);
-            collisionController.addListener(scene);
-            touchController.addListener(collisionController);
-            touchController.addListener(scene);
-        } catch (Exception e) {
-            Log.e("ModelActivity", e.getMessage(), e);
-            Toast.makeText(this, "Error loading CollisionController\n" + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
+        collisionController = new CollisionController(gLView, scene);
+        collisionController.addListener(scene);
+        touchController.addListener(collisionController);
+        touchController.addListener(scene);
 
         //创建相机控制器
-        try {
-            Log.i("ModelActivity", "Loading CameraController...");
-            cameraController = new CameraController(scene.getCamera());
-            gLView.getModelRenderer().addListener(cameraController);
-            touchController.addListener(cameraController);
-        } catch (Exception e) {
-            Log.e("ModelActivity", e.getMessage(), e);
-            Toast.makeText(this, "Error loading CameraController" + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
+        cameraController = new CameraController(scene.getCamera());
+        gLView.getModelRenderer().addListener(cameraController);
+        touchController.addListener(cameraController);
 
-        try {
-            // TODO: finish UI implementation
-            Log.i("ModelActivity", "Loading GUI...");
-            gui = new ModelViewerGUI(gLView, scene);
-            touchController.addListener(gui);
-            gLView.addListener(gui);
-            scene.addGUIObject(gui);
-        } catch (Exception e) {
-            Log.e("ModelActivity", e.getMessage(), e);
-            Toast.makeText(this, "Error loading GUI" + e.getMessage(), Toast.LENGTH_LONG).show();
-        }
-
+        gui = new ModelViewerGUI(gLView, scene);
+        touchController.addListener(gui);
+        gLView.addListener(gui);
+        scene.addGUIObject(gui);
 
         // 加载mode
         // load model
