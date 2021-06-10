@@ -71,51 +71,11 @@ public class DewuActivity extends Activity implements EventListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.i("ModelActivity", "Loading activity...");
         super.onCreate(savedInstanceState);
-
-        // Try to get input parameters
         Bundle b = getIntent().getExtras();
-        if (b != null) {
-            try {
-                if (b.getString("uri") != null) {
-                    this.paramUri = new URI(b.getString("uri"));
-                    Log.i("ModelActivity", "Params: uri '" + paramUri + "'");
-                }
-                this.paramType = b.getString("type") != null ? Integer.parseInt(b.getString("type")) : -1;
-                this.immersiveMode = "true".equalsIgnoreCase(b.getString("immersiveMode"));
+        this.paramUri = URI.create(b.getString("uri"));
 
-                if (b.getString("backgroundColor") != null) {
-                    String[] backgroundColors = b.getString("backgroundColor").split(" ");
-                    backgroundColor[0] = Float.parseFloat(backgroundColors[0]);
-                    backgroundColor[1] = Float.parseFloat(backgroundColors[1]);
-                    backgroundColor[2] = Float.parseFloat(backgroundColors[2]);
-                    backgroundColor[3] = Float.parseFloat(backgroundColors[3]);
-                }
-            } catch (Exception ex) {
-                Log.e("ModelActivity", "Error parsing activity parameters: " + ex.getMessage(), ex);
-            }
-
-        }
-
-        handler = new Handler(getMainLooper());
-
-        // Create our 3D scenario
-        Log.i("ModelActivity", "Loading Scene...");
         scene = new SceneLoader(this, paramUri, paramType, gLView);
-
-        //当 传进入文件 为空是，开启loader 去加载 文件
-        if (paramUri == null) {
-            final LoaderTask task = new DemoLoaderTask(this, null, scene);
-            task.execute();
-        }
-
-/*        Log.i("ModelActivity","Loading Scene...");
-        if (paramUri == null) {
-            scene = new ExampleSceneLoader(this);
-        } else {
-            scene = new SceneLoader(this, paramUri, paramType, gLView);
-        }*/
 
         try {
             Log.i("ModelActivity", "Loading GLSurfaceView...");
@@ -180,7 +140,6 @@ public class DewuActivity extends Activity implements EventListener {
         // load model
         scene.init();
     }
-
 
 
     @Override
