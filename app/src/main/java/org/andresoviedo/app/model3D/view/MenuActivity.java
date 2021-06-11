@@ -86,7 +86,7 @@ public class MenuActivity extends ListActivity {
 
                 case DEWU2:
                     Intent intent2 = new Intent(MenuActivity.this.getApplicationContext(), DewuActivity.class);
-                    intent2.putExtra("uri", Uri.parse("android://" + getPackageName() + "/assets/models/cube.obj").toString());
+                    intent2.putExtra("uri", Uri.parse("android://" + getPackageName() + "/assets/models/model.obj").toString());
                     MenuActivity.this.startActivity(intent2);
                     break;
 
